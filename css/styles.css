@@ -7,9 +7,11 @@
   --text-footer-clr: #e7e9fc;
   --font-hero-clr: #ffffff;
   --footer-soc-secondary: #31d0aa;
-  --border-customers-primary: #8e8f99;
-  --icon-customers-primary: #afb1b8;
+  --customers-primary: #8e8f99;
+  /*--icon-customers-primary: #afb1b8;*/
   --footer-soc-menu: rgba(255, 255, 255, 0.1);
+  ---bcgnd-modal: rgba(46, 47, 66, 0.4);
+  --modal: #fcfcfc;
 }
 
 h1,
@@ -158,7 +160,6 @@ img {
 .menu-tel:hover,
 .menu-tel:focus {
   color: var(--hover-color);
-  transform: color;
 }
 
 .menu-studio,
@@ -182,6 +183,23 @@ img {
 .menu-tel {
   color: inherit;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.current {
+  color: var(--hover-color);
+  position: relative;
+}
+
+.current::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--hover-color);
 }
 
 /*===========/HEADER/===========*/
@@ -212,13 +230,12 @@ img {
 
   color: var(--font-hero-clr);
   background-color: var(--button-color);
-
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 }
 .service-btn:hover,
 .service-btn:focus {
   background: var(--hover-color);
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero {
@@ -299,6 +316,7 @@ img {
 .foto-image:not(:last-child) {
   margin-right: 24px;
 }
+
 /*======OUR TEAM=============*/
 .container-team {
   flex-wrap: wrap;
@@ -365,13 +383,12 @@ img {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  transform: background-color;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .team-soc-link:hover,
 .team-soc-link:focus {
   background-color: var(--hover-color);
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .team-soc-icon {
@@ -431,23 +448,19 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: background-color;
+  border-radius: 50%;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-soc-link:hover,
 .footer-soc-link:focus {
   background-color: var(--footer-soc-secondary);
-  border-radius: 50%;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 /*======/FOOTER/=============*/
 /*==============CUSTOMERS=================*/
 
 .section-customers {
   padding-top: 120px;
-}
-
-.container-customers {
 }
 
 .customers-set {
@@ -457,7 +470,7 @@ footer {
 .customers-item {
   flex-basis: calc((100% - 120px) / 6);
   height: 88px;
-  border: 1px solid var(--border-customers-primary);
+  border: 1px solid var(--customers-primary);
   border-radius: 4px;
 }
 
@@ -471,24 +484,18 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--customers-primary);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.customers-link {
-  fill: var(--icon-customers-primary);
-}
-.customers-item:hover .customers-link {
-  border-color: var(--hover-color);
-  fill: var(--hover-color);
-}
-.customers-item:focus .customers-link {
-  border-color: var(--hover-color);
-  fill: var(--hover-color);
+.customers-icon {
+  fill: currentColor;
 }
 
-.customers-item:hover,
-.customers-item:focus {
-  /* border-color: var(--hover-color);*/
-  /*ИЗМЕНИЛА БОРДЕР ДЛЯ ПРОВЕРКИ ФОКУСА*/
-  border: 10px solid var(--hover-color);
+.customers-link:hover,
+.customers-link:focus {
+  border: 1px solid var(--hover-color);
+  color: var(--hover-color);
 }
 
 /*==============/CUSTOMERS/=================/
@@ -529,7 +536,9 @@ footer {
 
   cursor: pointer;
 
-  transition: color, background-color, box-shadow;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filter-btn:hover,
@@ -538,9 +547,6 @@ footer {
   background-color: var(--hover-color);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 /*------/MENU-FILTR/-----------*/
 /*------CARD-SET-----------*/
@@ -554,16 +560,39 @@ footer {
 .foto-card {
   flex-basis: calc((100% - 48px) / 3);
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08);
-  transform: box-shadow;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .foto-card:hover,
 .foto-card:focus {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
-  transition: box-shadow 2500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.foto-card:hover .text-above-img,
+.foto-card:focus .text-above-img {
+  transform: translateY(0%);
 }
 
+.foto-ptf-text {
+  position: relative;
+  overflow: hidden;
+}
+.text-above-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: auto;
+
+  width: 100%;
+  height: 100%;
+  padding-top: 40px;
+  padding-right: 32px;
+  padding-left: 32px;
+  color: var(--bcgnd-fltr-clr);
+  background-color: var(--button-color);
+}
 .card-text {
   padding-top: 32px;
   padding-bottom: 32px;
@@ -586,3 +615,57 @@ footer {
 }
 /*------/CARD-SET/-----------*/
 /*======/PORTOFOLIO/=============*/
+/*=========MODAL===================*/
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: var(---bcgnd-modal);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0);
+}
+.modal {
+  position: absolute;
+  width: 408px;
+  min-height: 576px;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  background-color: var(--modal);
+  border-radius: 4px;
+  padding: 24px;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.close-modal {
+  display: block;
+  margin-left: auto;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  background-color: var(--text-footer-clr);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  fill: #000000;
+  font-size: 0;
+}
+.close-modal:hover,
+.close-modal:focus {
+  background-color: var(--hover-color);
+  fill: var(--font-hero-clr);
+}
+
+/*=========/MODAL/===================*/
